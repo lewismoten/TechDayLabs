@@ -259,7 +259,5 @@ namespace BawlerTestProject
 
 			Assert.That(frame.Number, Is.EqualTo(10));
 		}
-
-
 	}
 }

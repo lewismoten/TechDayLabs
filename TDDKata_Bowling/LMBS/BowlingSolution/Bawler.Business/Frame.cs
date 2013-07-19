@@ -7,6 +7,7 @@ namespace Bawler.Business
 		public int Turns;
 		public bool IsSpare;
 		public bool IsStrike;
+		public bool IsDone;
 
 		public Frame()
 		{
@@ -42,6 +43,19 @@ namespace Bawler.Business
 			}
 
 			ApplyScoreToPreviousFrames(pins);
+
+			if(Number != 10 && (Turns == 2 || IsStrike))
+			{
+				IsDone = true;
+			}
+			else if(Number == 10 && Turns == 3)
+			{
+				IsDone = true;
+			}
+			else if(Number == 10 && Turns == 2 && !(IsStrike || IsSpare))
+			{
+				IsDone = true;
+			}
 		}
 
 		private void ApplyScoreToPreviousFrames(int pins)
